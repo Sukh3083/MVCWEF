@@ -1,0 +1,34 @@
+﻿@model System.Data.DataTable
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>DOB</th>
+        <th></th>
+    </tr>
+    @for (int i=0; i<Model.Rows.Count; i++) {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>
+                <a href="@Url.Action("Edit", "Person", new {@id=@Model.Rows[i][0]})">Edit</a>
+                <a href="@Url.Action("Delete", "Person", new {@id=@Model.Rows[i][0]})">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="@Url.Action("Create", "Person")">Add Person</a>
+
+
